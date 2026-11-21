@@ -1,0 +1,14 @@
+/* responsive.css — Giao diện cho màn hình nhỏ / điện thoại (luôn đặt cuối) */
+
+/* ===== ĐIỆN THOẠI / MÀN HÌNH NHỎ ===== */
+@media(max-width:1000px){.main{grid-template-columns:1fr}.panel{order:2;min-height:420px}}
+@media(max-width:760px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:12px;border-right:0}
+  .logo{margin:0 6px 0 0;font-size:20px}.side small,.qn,.grow{display:none}
+  .nav{width:auto;padding:7px 11px;font-size:13px}
+  .main{padding:12px}
+  .cell{min-height:78px;padding:3px}.chip{font-size:9px;padding:2px 4px}
+  .dowrow .f{display:none}.dowrow .s{display:inline}
+  .ch h1{font-size:20px}
+}

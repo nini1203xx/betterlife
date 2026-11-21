@@ -1,0 +1,20 @@
+/* base.css — Màu sắc, phông chữ, kiểu nút và ô nhập (SỬA MÀU Ở ĐÂY) */
+
+/* ===== MÀU SẮC (sửa ở đây để đổi tông màu cả trang) ===== */
+:root{
+  --ink:#141414;        /* đen: "Chờ làm", nút đang chọn */
+  --maroon:#6b0f1a;     /* đỏ rượu: "Đang làm" */
+  --steel:#4a7089;      /* xanh thép: "Xong" */
+  --pink:#fde1e5;       /* hồng: lịch hẹn / nhắc nhở */
+  --green:#d3e6cb;      /* xanh nhạt: ghi chú, nhật ký */
+  --glass:rgba(255,255,255,.72);
+  --bd:rgba(0,0,0,.09);
+  --mut:#6b7280;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:14px/1.45 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at 20% 15%,#f3f6ee,transparent 55%),radial-gradient(circle at 85% 80%,#d9e6dc,transparent 55%),#e8eee6;background-attachment:fixed}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+input[type=text],input[type=time],select,textarea{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:8px 10px}
+textarea{width:100%;resize:vertical}

@@ -1,0 +1,5 @@
+/* components.css — Thông báo nhắc nhở, hộp thoại sao lưu */
+
+/* Thông báo nhắc nhở */
+#toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;display:none;z-index:99;max-width:90%}
+dialog{border:0;border-radius:20px;padding:20px;width:min(460px,92vw)}
