@@ -1,6 +1,5 @@
-// panel.js — Panel trái: việc, lịch hẹn, ghi chú, nhật ký
+// panel.js — Thanh chi tiết ngày (nằm ngang dưới lịch): việc, lịch hẹn, ghi chú, nhật ký
 
-/* ===== PANEL TRÁI ===== */
 function drawPanel(){
   const p=$('#panel'),d=new Date(sel+'T00:00');
   const thu=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'][d.getDay()];
@@ -9,17 +8,21 @@ function drawPanel(){
   if(tab==='td'||tab==='ev'){
     const store=db[tab],arr=store[sel]=store[sel]||[],isEv=tab==='ev';
     if(isEv)arr.sort(byTime);
+
+    // Phần phải (danh sách): lịch hẹn = hàng thẻ ngang; việc = 3 cột theo trạng thái
     let body='';
-    if(!arr.length)body='<p class="mut" style="margin-top:16px">Chưa có gì cho ngày này.</p>';
+    if(!arr.length)body='<p class="mut">Chưa có gì cho ngày này.</p>';
     else if(isEv)body=arr.map(x=>`<div class="card2${x.done?' dn':''}"><button class="st ${x.done?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
     else body=[0,1,2].map(s=>{
       const l=arr.filter(x=>st(x)===s);if(!l.length)return '';
-      return `<h3><i class="dot s${s}"></i>${SN[s]} <span>· ${l.length}</span></h3>`+
-        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
+      return `<div class="grp"><h3><i class="dot s${s}"></i>${SN[s]} <span>· ${l.length}</span></h3>`+
+        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('')+'</div>';
     }).join('');
-    p.innerHTML=head+`<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">
+
+    // Phần trái: tiêu đề + ô thêm mới
+    p.innerHTML=`<div class="phead">${head}<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">
       ${isEv?`<input type="time" id="tm"><select id="rm"><option value="0">Đúng giờ</option><option value="10">Trước 10p</option><option value="30">Trước 30p</option><option value="60">Trước 1h</option></select>`:''}
-      <button class="pri" id="add">Thêm</button></div>`+body;
+      <button class="pri" id="add">Thêm</button></div></div><div class="strip">${body}</div>`;
 
     const add=()=>{const t=$('#in').value.trim();if(!t)return;
       const o={id:uid(),t};
@@ -34,8 +37,8 @@ function drawPanel(){
     p.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{store[sel]=arr.filter(i=>i.id!==b.dataset.d);save();drawAll()});
   }else{
     const isD=tab==='diary';
-    p.innerHTML=head+(isD?`<div class="mood"><span class="mut">Hôm nay bạn thấy sao?</span>${MOODS.map((m,i)=>`<button data-m="${i}" class="${db.mood[sel]===i?'on':''}">${m}</button>`).join('')}</div>`:'<div style="height:12px"></div>')+
-      `<textarea id="ta" placeholder="${isD?'Viết nhật ký ngày hôm nay…':'Ghi chú cho ngày này…'}">${esc(db[tab][sel]||'')}</textarea><div class="mut" id="sv">Tự động lưu</div>`;
+    p.innerHTML=`<div class="phead">${head}`+(isD?`<div class="mood"><span class="mut">Hôm nay bạn thấy sao?</span>${MOODS.map((m,i)=>`<button data-m="${i}" class="${db.mood[sel]===i?'on':''}">${m}</button>`).join('')}</div>`:'')+
+      `<div class="mut" id="sv">Tự động lưu</div></div><div class="strip" style="display:block"><textarea id="ta" placeholder="${isD?'Viết nhật ký ngày hôm nay…':'Ghi chú cho ngày này…'}">${esc(db[tab][sel]||'')}</textarea></div>`;
     let tm;
     $('#ta').oninput=e=>{db[tab][sel]=e.target.value;clearTimeout(tm);tm=setTimeout(()=>{save();drawCal();$('#sv').textContent='Đã lưu ✓'},400)};
     p.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{db.mood[sel]=+b.dataset.m;save();drawPanel();drawCal()});
