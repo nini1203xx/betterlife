@@ -15,13 +15,14 @@ function chips(k){
 /* ===== VẼ LỊCH ===== */
 function drawCal(){
   const y=view.getFullYear(),m=view.getMonth();
+  const mx=(innerWidth>1000&&innerHeight<820)?1:2;   // màn hình thấp: mỗi ô chỉ hiện 1 chip
   $('#title').textContent='Tháng '+(m+1)+', '+y;
   const off=(new Date(y,m,1).getDay()+6)%7,start=new Date(y,m,1-off),t=ks(new Date());
   let h='';
   for(let i=0;i<42;i++){
     const d=new Date(start);d.setDate(start.getDate()+i);const k=ks(d),c=chips(k);
     h+=`<div class="cell${d.getMonth()!==m?' out':''}${k===t?' today':''}${k===sel?' sel':''}" data-k="${k}">
-      <span class="dn0">${d.getDate()}</span>${c.slice(0,3).join('')}${c.length>2?`<div class="more">+${c.length-3} mục khác</div>`:''}</div>`;
+      <div class="top"><span class="dn0">${d.getDate()}</span>${c.length>mx?`<span class="more">+${c.length-mx}</span>`:''}</div>${c.slice(0,mx).join('')}</div>`;
   }
   $('#grid').innerHTML=h;
   document.querySelectorAll('.cell').forEach(el=>el.onclick=()=>{
