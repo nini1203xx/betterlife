@@ -1,8 +1,8 @@
 /* panel.css — Panel trái: danh sách việc, thẻ, nhật ký */
 
 /* ===== PANEL TRÁI (kính mờ + rừng thông) ===== */
-.panel{position:relative;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--bd);border-radius:24px;padding:18px;min-height:calc(100vh - 44px)}
-.panel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;pointer-events:none;opacity:.55;
+.panel{position:relative;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--bd);border-radius:24px;padding:18px;margin-top:16px;display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:18px;align-items:start}
+.panel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;pointer-events:none;opacity:.35;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 120' preserveAspectRatio='none'%3E%3Cg fill='%232f6a49'%3E%3Cpath d='M20 120l25-80 25 80zM60 120l30-100 30 100zM110 120l22-70 22 70zM150 120l32-110 32 110zM205 120l24-80 24 80zM250 120l28-95 28 95z'/%3E%3C/g%3E%3Cg fill='%23498a63' opacity='.7'%3E%3Cpath d='M0 120l20-60 20 60zM95 120l18-55 18 55zM180 120l20-65 20 65zM270 120l18-50 18 50z'/%3E%3C/g%3E%3C/svg%3E") bottom/100% 100% no-repeat}
 .panel>*{position:relative;z-index:1}
 .panel h2{margin:0;font-size:20px;font-weight:800}
@@ -22,4 +22,10 @@
 .mood{display:flex;gap:4px;align-items:center;margin:12px 0 8px;flex-wrap:wrap}
 .mood button{background:none;border:1px solid transparent;border-radius:10px;font-size:20px;padding:2px 6px}
 .mood button.on{background:#fff;border-color:var(--ink)}
-#ta{height:300px}
+#ta{height:130px}
+
+/* ===== THANH NGANG: cột trái (tiêu đề + ô thêm) | cột phải (danh sách trượt ngang) ===== */
+.strip{display:flex;gap:14px;align-items:flex-start;overflow-x:auto;padding-bottom:6px;min-width:0}
+.strip>.card2{flex:0 0 230px;margin-bottom:0}      /* lịch hẹn: mỗi thẻ rộng 230px, xếp ngang */
+.grp{flex:0 0 240px;max-height:230px;overflow-y:auto}  /* việc: mỗi trạng thái là 1 cột */
+.grp h3{margin:0 0 8px}
