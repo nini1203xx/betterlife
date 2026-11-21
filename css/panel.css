@@ -25,7 +25,7 @@
 #ta{height:130px}
 
 /* ===== THANH NGANG: cột trái (tiêu đề + ô thêm) | cột phải (danh sách trượt ngang) ===== */
-.strip{display:flex;gap:14px;align-items:flex-start;overflow-x:auto;padding-bottom:6px;min-width:0}
-.strip>.card2{flex:0 0 230px;margin-bottom:0}      /* lịch hẹn: mỗi thẻ rộng 230px, xếp ngang */
+.strip{display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:8px 12px;max-height:240px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px;min-width:0;scrollbar-width:thin}
+.strip>.card2{flex:0 0 auto;width:230px;margin:0}      /* lịch hẹn: mỗi thẻ rộng 230px, xếp ngang */
 .grp{flex:0 0 240px;max-height:230px;overflow-y:auto}  /* việc: mỗi trạng thái là 1 cột */
 .grp h3{margin:0 0 8px}
