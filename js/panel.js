@@ -13,14 +13,10 @@ function drawPanel(){
     let body='';
     if(!arr.length)body='<p class="mut">Chưa có gì cho ngày này.</p>';
     else if(isEv)body=arr.map(x=>`<div class="card2${x.done?' dn':''}"><button class="st ${x.done?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
-    else body=[0,1,2].map(s=>{
-      const l=arr.filter(x=>st(x)===s);if(!l.length)return '';
-      return `<div class="grp"><h3><i class="dot s${s}"></i>${SN[s]} <span>· ${l.length}</span></h3>`+
-        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('')+'</div>';
-    }).join('');
+    else body=[0,1,2].flatMap(s=>arr.filter(x=>st(x)===s)).map(x=>`<div class="card2${st(x)===2?' dn':''}"><button class="st s${st(x)}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
 
     // Phần trái: tiêu đề + ô thêm mới
-    p.innerHTML=`<div class="phead">${head}<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">
+    p.innerHTML=`<div class="phead">${head}${isEv?'':`<div class="mut">${[0,1,2].map(s=>SN[s]+' '+arr.filter(x=>st(x)===s).length).join(' · ')}</div>`}<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">
       ${isEv?`<input type="time" id="tm"><select id="rm"><option value="0">Đúng giờ</option><option value="10">Trước 10p</option><option value="30">Trước 30p</option><option value="60">Trước 1h</option></select>`:''}
       <button class="pri" id="add">Thêm</button></div></div><div class="strip">${body}</div>`;
 
