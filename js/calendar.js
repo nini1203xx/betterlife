@@ -21,7 +21,7 @@ function drawCal(){
   for(let i=0;i<42;i++){
     const d=new Date(start);d.setDate(start.getDate()+i);const k=ks(d),c=chips(k);
     h+=`<div class="cell${d.getMonth()!==m?' out':''}${k===t?' today':''}${k===sel?' sel':''}" data-k="${k}">
-      <span class="dn0">${d.getDate()}</span>${c.slice(0,3).join('')}${c.length>3?`<div class="more">+${c.length-3} mục khác</div>`:''}</div>`;
+      <span class="dn0">${d.getDate()}</span>${c.slice(0,3).join('')}${c.length>2?`<div class="more">+${c.length-3} mục khác</div>`:''}</div>`;
   }
   $('#grid').innerHTML=h;
   document.querySelectorAll('.cell').forEach(el=>el.onclick=()=>{
