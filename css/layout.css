@@ -9,4 +9,4 @@
 .nav.on{background:var(--ink);color:#fff}
 .grow{flex:1}
 .qn textarea{height:110px;font-size:13px}
-.main{display:grid;grid-template-columns:300px 1fr;gap:18px;padding:22px;align-items:start}
+.main{display:grid;grid-template-columns:1fr;gap:0;padding:22px;align-items:start}
