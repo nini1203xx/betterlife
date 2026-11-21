@@ -2,7 +2,7 @@
 @media(min-width:1001px){
   /* Toàn bộ trang cao đúng bằng màn hình */
   .app{height:100vh;height:100dvh;min-height:0}
-  .main{display:flex;flex-direction:column;gap:12px;padding:16px 20px;height:100vh;height:100dvh;min-height:0;overflow:hidden}
+  .main{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:16px 20px;height:100vh;height:100dvh;min-height:0;overflow:hidden}
 
   /* Lịch: tự giãn để lấp phần còn lại, 6 hàng chia đều chiều cao */
   .main>section:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
