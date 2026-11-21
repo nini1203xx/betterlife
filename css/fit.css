@@ -1,0 +1,22 @@
+/* fit.css — Vừa khít màn hình: không cần cuộn trang (chỉ áp dụng khi màn hình rộng từ 1001px) */
+@media(min-width:1001px){
+  /* Toàn bộ trang cao đúng bằng màn hình */
+  .app{height:100vh;height:100dvh;min-height:0}
+  .main{display:flex;flex-direction:column;gap:12px;padding:16px 20px;height:100vh;height:100dvh;min-height:0;overflow:hidden}
+
+  /* Lịch: tự giãn để lấp phần còn lại, 6 hàng chia đều chiều cao */
+  .main>section:first-child{flex:1;min-height:0;display:flex;flex-direction:column}
+  .ch{margin-bottom:8px}
+  .ch h1{font-size:22px}
+  .cal{flex:1;min-height:0;grid-template-rows:repeat(6,minmax(0,1fr))}
+  .cell{min-height:0;padding:4px}
+  .dn0{min-width:22px;height:22px;line-height:22px;font-size:12px;margin-bottom:2px}
+  .chip{font-size:10px;padding:2px 6px;margin-bottom:2px}
+
+  /* Thanh chi tiết ngày: cao cố định, nội dung bên trong tự cuộn nếu dài */
+  .panel{flex:none;height:200px;margin-top:0;padding:14px 18px;grid-template-rows:minmax(0,1fr);align-items:stretch}
+  .phead{min-height:0;overflow-y:auto}
+  .strip{height:100%;min-height:0;overflow:auto}
+  #ta{height:100%;resize:none}
+  .grp{max-height:100%}
+}
