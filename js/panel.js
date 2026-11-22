@@ -11,14 +11,11 @@ function drawPanel(){
 
     // Phần phải (danh sách): lịch hẹn = hàng thẻ ngang; việc = 3 cột theo trạng thái
     let body='';
-    const cls=(!isEv&&arr.length)?'cols':'list';
+    const cls='list';
+    const dn=x=>isEv?x.done:st(x)===2;   // đã xong?
     if(!arr.length)body='<p class="mut">Chưa có gì cho ngày này.</p>';
-    else if(isEv)body=arr.map(x=>`<div class="card2${x.done?' dn':''}"><button class="st ${x.done?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
-    else body=[0,1,2].map(s=>{
-      const l=arr.filter(x=>st(x)===s);
-      return `<div class="grp"><h3><i class="dot s${s}"></i>${SN[s]} <span>· ${l.length}</span></h3>`+
-        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('')+'</div>';
-    }).join('');
+    else body=arr.map(x=>`<div class="card2${dn(x)?' dn':''}"><button class="st ${dn(x)?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
+   
 
     // Phần trái: tiêu đề + ô thêm mới
     p.innerHTML=`<div class="phead">${head}<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">
@@ -33,7 +30,7 @@ function drawPanel(){
     // bấm chấm tròn: đổi trạng thái (việc: chờ → đang làm → xong → chờ)
     p.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{
       const x=arr.find(i=>i.id===b.dataset.s);
-      if(isEv)x.done=!x.done;else x.s=(st(x)+1)%3;
+      if(isEv)x.done=!x.done;else x.s=st(x)===2?0:2;
       save();drawAll()});
     p.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{store[sel]=arr.filter(i=>i.id!==b.dataset.d);save();drawAll()});
   }else{
