@@ -20,9 +20,10 @@ function drawCal(){
   const off=(new Date(y,m,1).getDay()+6)%7,start=new Date(y,m,1-off),t=ks(new Date());
   let h='';
   for(let i=0;i<42;i++){
-    const d=new Date(start);d.setDate(start.getDate()+i);const k=ks(d),c=chips(k);
+    const d=new Date(start);d.setDate(start.getDate()+i);const k=ks(d),c=chips(k),L=lunarOf(d),H=holidayOf(d);
+    if(H)c.unshift(`<div class="chip hol">${esc(H.t)}</div>`);
     h+=`<div class="cell${d.getMonth()!==m?' out':''}${k===t?' today':''}${k===sel?' sel':''}" data-k="${k}">
-      <div class="top"><span class="dn0">${d.getDate()}</span>${c.length>mx?`<span class="more">+${c.length-mx}</span>`:''}</div>${c.slice(0,mx).join('')}</div>`;
+    <span class="dn0${d.getDay()===0||(H&&H.off)?' red':''}">${d.getDate()}</span><div class="lun">${L.d}/${L.m}${L.leap?'n':''}</div>${c.slice(0,mx).join('')}${c.length>mx?`<span class="more">+${c.length-mx}</span>`:''}</div>`;
   }
   $('#grid').innerHTML=h;
   document.querySelectorAll('.cell').forEach(el=>el.onclick=()=>{
