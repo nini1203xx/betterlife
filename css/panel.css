@@ -37,3 +37,11 @@
 .strip.cols .card2{width:auto;margin:0 0 6px}
 .strip.list{display:block;max-height:240px;overflow-x:hidden;overflow-y:auto;scrollbar-width:thin}
 .strip.list>.card2{width:auto;margin:0 0 6px}
+
+/* ===== THẺ VIỆC / LỊCH HẸN: NHỎ GỌN, DẠNG VIÊN THUỐC ===== */
+.strip .card2{border-radius:999px;padding:3px 8px 3px 10px;gap:7px;font-size:12px;line-height:1.3;box-shadow:0 1px 2px #0001}
+.strip .card2 span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}  /* chữ dài thì cắt bằng "…" để giữ hình viên thuốc */
+.strip .card2 .st{width:10px;height:10px}
+.strip .card2 .tm{font-size:11px}
+.strip .card2 .x{font-size:11px;padding:0 3px}
+.strip.cols .card2,.strip.list>.card2{margin:0 0 4px}
