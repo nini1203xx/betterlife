@@ -3,9 +3,10 @@
 function drawPanel(){
   const p=$('#panel'),d=new Date(sel+'T00:00');
   const thu=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'][d.getDay()];
-  const head=`<h2>${thu}, ${d.getDate()}/${d.getMonth()+1}</h2><div class="mut">${NAV.find(n=>n[0]===tab)[2]} · Âm lịch ${lunarOf(d).d}/${lunarOf(d).m}${holidayOf(d)?' · '+esc(holidayOf(d).t):''}</div>
+  const head=`<h2>${thu}, ${d.getDate()}/${d.getMonth()+1}</h2><div class="mut">${NAV.find(n=>n[0]===tab)[2]} · Âm lịch ${lunarOf(d).d}/${lunarOf(d).m}${holidayOf(d)?' · '+esc(holidayOf(d).t):''}</div>`;
 
   if(tab==='all'){drawDay(p,head);return}
+
   if(tab==='td'||tab==='ev'){
     const store=db[tab],arr=store[sel]=store[sel]||[],isEv=tab==='ev';
     if(isEv)arr.sort(byTime);
@@ -16,7 +17,6 @@ function drawPanel(){
     const dn=x=>isEv?x.done:st(x)===2;   // đã xong?
     if(!arr.length)body='<p class="mut">Chưa có gì cho ngày này.</p>';
     else body=arr.map(x=>`<div class="card2${dn(x)?' dn':''}"><button class="st ${dn(x)?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
-   
 
     // Phần trái: tiêu đề + ô thêm mới
     p.innerHTML=`<div class="phead">${head}<div class="row"><input type="text" id="in" placeholder="${isEv?'Tên sự kiện / lời nhắc…':'Thêm việc cần làm…'}">

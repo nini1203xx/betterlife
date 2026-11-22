@@ -11,18 +11,21 @@
 .dowrow div{text-align:center;font-weight:600;font-size:12px;padding:6px 0}
 .dowrow .s{display:none}
 .cal{border-radius:20px;overflow:hidden;border:1px solid var(--bd);background:var(--glass);backdrop-filter:blur(10px)}
-.cell{min-height:80px;padding:6px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);cursor:pointer;overflow:hidden;min-width:0}
+.cell{min-height:112px;padding:6px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);cursor:pointer;overflow:hidden;min-width:0}
 .cell:hover{background:rgba(255,255,255,.7)}
 .cell.out{opacity:.45}
 .cell.sel{box-shadow:inset 0 0 0 2px var(--ink)}
 .dn0{font-weight:700;font-size:13px;display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;border-radius:99px;margin-bottom:4px}
 .today .dn0{background:var(--ink);color:#fff}
-.chip{font-size:10px;font-weight:600;padding:2px 6px;border-radius:99px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.chip{font-size:11px;font-weight:600;padding:3px 7px;border-radius:99px;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
 .chip.s0{background:var(--ink)}.chip.s1{background:var(--maroon)}.chip.s2{background:var(--steel);opacity:.75;text-decoration:line-through}
 .chip.ev{background:var(--pink);color:var(--maroon)}
 .chip.nt{background:var(--green);color:#24432f}
 .chip.dn{opacity:.5;text-decoration:line-through}
 .more{font-size:11px;color:var(--mut);padding-left:4px}
+
+/* Hàng trên của ô: số ngày bên trái, "+N" bên phải */
+.top{display:flex;align-items:center;justify-content:space-between}
 
 /* ===== Ô LỊCH: số ở giữa, âm lịch bên dưới, rồi tới các chip ===== */
 .cell{position:relative;text-align:center}

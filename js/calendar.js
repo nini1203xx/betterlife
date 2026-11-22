@@ -3,7 +3,7 @@
 /* ===== CÁC "CHIP" MÀU TRONG Ô LỊCH ===== */
 function chips(k){
   const a=[],all=flt==='all';
-   dayItems(k).forEach(it=>{
+  dayItems(k).forEach(it=>{
     if(!(all||flt===it.type))return;
     a.push(`<div class="chip ${it.type==='ev'?'ev':'s0'}${it.done?' dn':''}">${it.time?it.time+' ':''}${esc(it.t)}</div>`);
   });
@@ -27,7 +27,7 @@ function drawCal(){
     const k=ks(d),c=chips(k),L=lunarOf(d),H=holidayOf(d);
     if(H)c.unshift(`<div class="chip hol">${esc(H.t)}</div>`);
     h+=`<div class="cell${d.getMonth()!==m?' out':''}${k===t?' today':''}${k===sel?' sel':''}" data-k="${k}">
-    <span class="dn0${d.getDay()===0||(H&&H.off)?' red':''}">${d.getDate()}</span><div class="lun">${L.d}/${L.m}${L.leap?'n':''}</div>${c.slice(0,mx).join('')}${c.length>mx?`<span class="more">+${c.length-mx}</span>`:''}</div>`;
+      <span class="dn0${d.getDay()===0||(H&&H.off)?' red':''}">${d.getDate()}</span><div class="lun">${L.d}/${L.m}${L.leap?'n':''}</div>${c.slice(0,mx).join('')}${c.length>mx?`<span class="more">+${c.length-mx}</span>`:''}</div>`;
   }
   $('#grid').innerHTML=h;
   document.querySelectorAll('.cell').forEach(el=>el.onclick=()=>{
