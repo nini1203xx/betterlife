@@ -29,3 +29,11 @@
 .strip>.card2{flex:0 0 auto;width:230px;margin:0}      /* lịch hẹn: mỗi thẻ rộng 230px, xếp ngang */
 .grp{flex:0 0 240px;max-height:230px;overflow-y:auto}  /* việc: mỗi trạng thái là 1 cột */
 .grp h3{margin:0 0 8px}
+
+/* ===== CUỘN DỌC: việc chia 3 cột theo trạng thái, lịch hẹn là 1 danh sách; nhiều thì cuộn dọc ===== */
+.strip.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:12px;max-height:240px;overflow:hidden;align-items:stretch}
+.strip.cols .grp{min-height:0;max-height:240px;overflow-y:auto;padding-right:4px;scrollbar-width:thin}
+.strip.cols .grp h3{position:sticky;top:0;z-index:1;margin:0 0 6px;padding:2px 0;font-size:13px;background:rgba(246,248,244,.96)}
+.strip.cols .card2{width:auto;margin:0 0 6px}
+.strip.list{display:block;max-height:240px;overflow-x:hidden;overflow-y:auto;scrollbar-width:thin}
+.strip.list>.card2{width:auto;margin:0 0 6px}
