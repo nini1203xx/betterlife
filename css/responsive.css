@@ -12,3 +12,8 @@
   .dowrow .f{display:none}.dowrow .s{display:inline}
   .ch h1{font-size:20px}
 }
+
+@media(max-width:760px){
+  .strip.cols{grid-template-columns:1fr;grid-template-rows:none;max-height:none;overflow:visible}
+  .strip.cols .grp{max-height:180px}
+}
