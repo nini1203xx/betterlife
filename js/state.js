@@ -2,8 +2,8 @@
 
 /* ===== TRẠNG THÁI ===== */
 let view=new Date();view.setDate(1);
-let sel=ks(new Date()),tab='td',flt='all';
-const NAV=[['td','✅','Việc cần làm'],['ev','🗓️','Lịch hẹn'],['note','📝','Ghi chú'],['diary','📖','Nhật ký']];
+let sel=ks(new Date()),tab='all',flt='all';
+const NAV=[['all','✅','Việc cần làm'],['ev','🗓️','Lịch hẹn'],['note','📝','Ghi chú'],['diary','📖','Nhật ký']];
 const FL=[['all','Tất cả'],['td','Việc'],['ev','Hẹn'],['nt','Nhật ký']];
 const SN=['Chờ làm','Đang làm','Xong'];
 const MOODS=['😞','😕','😐','🙂','😄'];
