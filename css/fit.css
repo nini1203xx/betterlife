@@ -14,10 +14,20 @@
   .chip{font-size:10px;line-height:1.3;padding:1px 6px;margin-bottom:2px}
 
   /* Thanh chi tiết ngày: cao cố định, nội dung bên trong tự cuộn nếu dài */
-  .panel{flex:none;height:150px;margin-top:0;padding:14px 18px;grid-template-rows:minmax(0,1fr);align-items:stretch}
+  .panel{flex:none;height:150px;margin-top:0;padding:10px 16px;grid-template-rows:minmax(0,1fr);align-items:stretch}
   .phead{min-height:0;overflow-y:auto}
   .strip{height:100%;max-height:none;min-height:0;overflow-x:auto;overflow-y:hidden}
   #ta{height:100%;resize:none}
   .grp{max-height:100%}
+  .strip.cols,.strip.list{height:100%;max-height:none}
+  .strip.cols .grp{max-height:100%}
   .strip>.card2{padding:5px 10px;width:210px;margin:0;font-size:13px}
+
+  /* Thu gọn nửa trái của thanh để vừa chiều cao thấp */
+  .panel::after{height:40px}
+  .panel h2{font-size:17px}
+  .panel .row{margin:6px 0 0}
+  .panel .row input,.panel .row select,.panel .pri{padding:5px 8px}
+  .phead .mood{margin:4px 0}
+  .phead .mood button{font-size:16px;padding:1px 5px}
 }
