@@ -12,7 +12,7 @@
   --mut:#6b7280;
 }
 *{box-sizing:border-box}
-body{margin:0;color:var(--ink);font:14px/1.45 "Times New Roman",Times,serif;
+body{margin:0;color:var(--ink);font:14px/1.45 "Playfair Display",Times,serif;
   background:radial-gradient(circle at 20% 15%,#f3f6ee,transparent 55%),radial-gradient(circle at 85% 80%,#d9e6dc,transparent 55%),#e8eee6;background-attachment:fixed}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
