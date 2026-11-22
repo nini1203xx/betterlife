@@ -3,7 +3,7 @@
 function drawPanel(){
   const p=$('#panel'),d=new Date(sel+'T00:00');
   const thu=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'][d.getDay()];
-  const head=`<h2>${thu}, ${d.getDate()}/${d.getMonth()+1}</h2><div class="mut">${NAV.find(n=>n[0]===tab)[2]}</div>`;
+  const head=`<h2>${thu}, ${d.getDate()}/${d.getMonth()+1}</h2><div class="mut">${NAV.find(n=>n[0]===tab)[2]} · Âm lịch ${lunarOf(d).d}/${lunarOf(d).m}${holidayOf(d)?' · '+esc(holidayOf(d).t):''}</div>
 
   if(tab==='td'||tab==='ev'){
     const store=db[tab],arr=store[sel]=store[sel]||[],isEv=tab==='ev';
