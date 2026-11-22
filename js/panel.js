@@ -13,11 +13,11 @@ function drawPanel(){
     let body='';
     const cls=(!isEv&&arr.length)?'cols':'list';
     if(!arr.length)body='<p class="mut">Chưa có gì cho ngày này.</p>';
-    else if(isEv)body=arr.map(x=>`<div class="card2${x.done?' dn':''}"><button class="st ${x.done?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
+    else if(isEv)body=arr.map(x=>`<div class="card2${x.done?' dn':''}"><button class="st ${x.done?'s2':'s0'}" data-s="${x.id}" title="Đánh dấu xong"></button>${x.time?`<b class="tm">${x.time}</b>`:''}<span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('');
     else body=[0,1,2].map(s=>{
       const l=arr.filter(x=>st(x)===s);
       return `<div class="grp"><h3><i class="dot s${s}"></i>${SN[s]} <span>· ${l.length}</span></h3>`+
-        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span>${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('')+'</div>';
+        l.map(x=>`<div class="card2${s===2?' dn':''}"><button class="st s${s}" data-s="${x.id}" title="Bấm để đổi trạng thái"></button><span title="${esc(x.t)}">${esc(x.t)}</span><button class="x" data-d="${x.id}">✕</button></div>`).join('')+'</div>';
     }).join('');
 
     // Phần trái: tiêu đề + ô thêm mới
