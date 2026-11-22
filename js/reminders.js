@@ -5,11 +5,11 @@ try{if('Notification' in window&&Notification.permission==='default')Notificatio
 function toast(msg){const t=$('#toast');t.textContent='🔔 '+msg;t.style.display='block';setTimeout(()=>t.style.display='none',12000);t.onclick=()=>t.style.display='none'}
 function check(){
   const n=new Date(),k=ks(n),mins=n.getHours()*60+n.getMinutes();let ch=false;
-  (db.ev[k]||[]).forEach(e=>{
+  dayItems(k).forEach(e=>{
     if(!e.time||e.done||e.fired)return;
     const [h,m]=e.time.split(':').map(Number),at=h*60+m;
     if(mins>=at-(e.rm||0)&&mins<=at+30){
-      e.fired=true;ch=true;toast(e.t+' ('+e.time+')');
+      markFired(e,k);ch=true;toast(e.t+' ('+e.time+')');
       try{if(Notification.permission==='granted')new Notification('Nhắc nhở',{body:e.t+' – '+e.time})}catch(x){}
     }
   });
