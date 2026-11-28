@@ -7,10 +7,8 @@ function chips(k){
     if(!(all||flt===it.type))return;
     a.push(`<div class="chip ${it.type==='ev'?'ev':'s0'}${it.done?' dn':''}">${it.time?it.time+' ':''}${esc(it.t)}</div>`);
   });
-  if(all||flt==='nt'){
-    if((db.note[k]||'').trim())a.push('<div class="chip nt">📝 Ghi chú</div>');
-    if((db.diary[k]||'').trim())a.push(`<div class="chip nt">📖 Nhật ký ${db.mood[k]!=null?MOODS[db.mood[k]]:''}</div>`);
-  }
+   if((all||flt==='note')&&(db.note[k]||'').trim())a.push('<div class="chip nt">📝 Ghi chú</div>');
+  if((all||flt==='diary')&&(db.diary[k]||'').trim())a.push(`<div class="chip nt">📖 Nhật ký ${db.mood[k]!=null?MOODS[db.mood[k]]:''}</div>`);
   return a;
 }
 
