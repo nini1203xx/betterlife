@@ -4,6 +4,6 @@
 let view=new Date();view.setDate(1);
 let sel=ks(new Date()),tab='all',flt='all';
 const NAV=[['all','🗓️','Trong ngày'],['note','📝','Ghi chú'],['diary','📖','Nhật ký']];
-const FL=[['all','Tất cả'],['td','Việc'],['ev','Hẹn'],['nt','Nhật ký']];
+const FL=[['all','Tất cả'],['td','Việc'],['ev','Hẹn'],['note','Ghi chú'],['diary','Nhật ký']];
 const SN=['Chờ làm','Đang làm','Xong'];
 const MOODS=['😞','😕','😐','🙂','😄'];
