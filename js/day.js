@@ -40,5 +40,5 @@ function drawDay(p,head){
   $('#add').onclick=add;$('#in').onkeydown=e=>{if(e.key==='Enter')add()};
   p.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{const[s,id]=b.dataset.s.split('|');toggleDone(items.find(i=>i.src===s&&i.id===id),k);drawAll()});
   p.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const[s,id]=b.dataset.d.split('|');if(removeItem(items.find(i=>i.src===s&&i.id===id),k))drawAll()});
-  p.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{tab=b.dataset.go;drawNav();drawPanel()});
+  p.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{tab=b.dataset.go;flt=tab;drawNav();drawCal();drawPanel()
 }
